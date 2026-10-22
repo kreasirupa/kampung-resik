@@ -1,0 +1,26 @@
+/* styles.css — KAMPUNG RESIK Kelurahan Jatimekar */
+:root {
+  --bg-cream: #FDFBF7;
+  --primary-green: #1B5E20;
+  --accent-green: #2E7D32;
+}
+
+body {
+  background-color: var(--bg-cream);
+  color: #1E293B;
+  overflow-x: hidden;
+}
+
+.bg-leaf-pattern {
+  background-image: radial-gradient(rgba(46, 125, 50, 0.08) 1.5px, transparent 1.5px), radial-gradient(rgba(46, 125, 50, 0.05) 1.5px, #FDFBF7 1.5px);
+  background-size: 36px 36px;
+  background-position: 0 0, 18px 18px;
+}
+
+.service-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+}
