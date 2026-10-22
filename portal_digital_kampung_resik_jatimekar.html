@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags Dasar -->
+    <title>KAMPUNG RESIK — Portal Digital Terpadu Kelurahan Jatimekar</title>
+    <meta name="description" content="KAMPUNG RESIK adalah portal layanan digital terpadu Kelurahan Jatimekar, Kota Bekasi. Akses cepat pelaporan lingkungan Jalin Jatimekar, Pojok Edukasi UMKM, Dashboard NIB, dan Radar Gotong Royong.">
+    <meta name="keywords" content="Kampung Resik, Kelurahan Jatimekar, Bekasi, Jalin Jatimekar, UMKM Jatimekar, NIB UMKM, Radar Gotong Royong, Layanan Warga Digital">
+    <meta name="author" content="Kelurahan Jatimekar">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="KAMPUNG RESIK — Portal Digital Terpadu Kelurahan Jatimekar">
+    <meta property="og:description" content="Satu pintu digital untuk layanan pelaporan warga, edukasi & direktori UMKM, serta kolaborasi gotong royong masyarakat Kelurahan Jatimekar.">
+    <meta property="og:image" content="https://i.ibb.co.com/G3fjXpWH/IMG-2833.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.ibb.co.com/G3fjXpWH/IMG-2833.png">
+
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        resik: {
+                            50: '#F4F9F5',
+                            100: '#E6F2E9',
+                            200: '#C5E2CD',
+                            500: '#2E7D32',
+                            600: '#1B5E20',
+                            700: '#144517',
+                            800: '#0D2E10',
+                            900: '#071B09',
+                        },
+                        krem: {
+                            50: '#FDFBF7',
+                            100: '#F7F3E8',
+                            200: '#EFE6D1',
+                            300: '#E2D3B3',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 12px 32px -4px rgba(20, 69, 23, 0.07), 0 4px 12px -2px rgba(20, 69, 23, 0.04)',
+                        'card-hover': '0 20px 40px -8px rgba(27, 94, 32, 0.16), 0 8px 16px -4px rgba(27, 94, 32, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS (setara dengan styles.css) -->
+    <style>
+        /* Variabel & Utilitas Dasar */
+        :root {
+            --bg-cream: #FDFBF7;
+            --primary-green: #1B5E20;
+            --accent-green: #2E7D32;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: #1E293B;
+            overflow-x: hidden;
+        }
+
+        /* Dekorasi Latar Belakang Organik */
+        .bg-leaf-pattern {
+            background-image: radial-gradient(rgba(46, 125, 50, 0.08) 1.5px, transparent 1.5px), radial-gradient(rgba(46, 125, 50, 0.05) 1.5px, #FDFBF7 1.5px);
+            background-size: 36px 36px;
+            background-position: 0 0, 18px 18px;
+        }
+
+        /* Efek Transisi Kartu Layanan */
+        .service-card {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .service-card:hover .service-logo-wrap {
+            transform: scale(1.06);
+        }
+
+        .service-logo-wrap {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Indikator Navigasi Aktif */
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2.5px;
+            background-color: #2E7D32;
+            border-radius: 999px;
+            transition: width 0.25s ease;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Animasi Muncul Halus */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .reveal-item.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-resik-500 selection:text-white">
+
+    <!-- Top Bar Informasi Singkat Kelurahan -->
+    <div class="bg-resik-700 text-krem-50 text-xs py-2 px-4 border-b border-resik-600">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-medium">Portal Layanan Masyarakat Digital — Kelurahan Jatimekar, Kec. Jatiasih, Kota Bekasi</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="#layanan" class="hover:text-emerald-200 underline underline-offset-2 transition">4 Layanan Aktif</a>
+                <span class="text-resik-200">|</span>
+                <button id="openDeployGuideBtn" type="button" class="inline-flex items-center gap-1 text-emerald-200 hover:text-white font-medium transition cursor-pointer">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span>File GitHub & Netlify</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navbar Sticky -->
+    <header id="navbar" class="sticky top-0 z-40 bg-krem-50/90 backdrop-blur-md border-b border-krem-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo & Nama -->
+                <a href="#beranda" class="flex items-center gap-3.5 group focus:outline-none">
+                    <div class="w-12 h-12 rounded-2xl bg-white p-1.5 shadow-sm border border-resik-100 flex items-center justify-center overflow-hidden group-hover:border-resik-500 transition">
+                        <img 
+                            src="https://i.ibb.co.com/G3fjXpWH/IMG-2833.png" 
+                            alt="Logo KAMPUNG RESIK Kelurahan Jatimekar" 
+                            class="w-full h-full object-contain"
+                            onerror="this.onerror=null; this.src='https://placehold.co/96x96/1B5E20/FFFFFF?text=KR';"
+                        >
+                    </div>
+                    <div>
+                        <span class="block font-display font-extrabold text-lg sm:text-xl tracking-tight text-resik-700 leading-none">
+                            KAMPUNG RESIK
+                        </span>
+                        <span class="block text-xs text-slate-600 font-medium mt-1">
+                            Kelurahan Jatimekar Terpadu
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Menu Navigasi Desktop -->
+                <nav class="hidden md:flex items-center gap-8" aria-label="Navigasi Utama">
+                    <a href="#beranda" class="nav-link active text-sm font-semibold text-slate-700 hover:text-resik-600 transition">Beranda</a>
+                    <a href="#tentang" class="nav-link text-sm font-semibold text-slate-700 hover:text-resik-600 transition">Tentang Program</a>
+                    <a href="#layanan" class="nav-link text-sm font-semibold text-slate-700 hover:text-resik-600 transition">Layanan Digital</a>
+                    <a href="#manfaat" class="nav-link text-sm font-semibold text-slate-700 hover:text-resik-600 transition">Manfaat</a>
+                    <a href="#partisipasi" class="nav-link text-sm font-semibold text-slate-700 hover:text-resik-600 transition">Partisipasi</a>
+                </nav>
+
+                <!-- Tombol Aksi Cepat Desktop -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#layanan" class="inline-flex items-center gap-2 bg-resik-600 hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition-all">
+                        <span>Jelajahi Layanan</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Tombol Burger Mobile -->
+                <div class="flex md:hidden">
+                    <button id="mobileMenuBtn" type="button" aria-label="Buka Menu Navigasi" aria-expanded="false" class="p-2.5 rounded-xl text-resik-700 hover:bg-resik-100 focus:outline-none focus:ring-2 focus:ring-resik-500">
+                        <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Drawer Menu Navigasi Mobile -->
+        <div id="mobileMenuPanel" class="hidden md:hidden bg-white border-b border-krem-200 px-4 pt-3 pb-6 shadow-lg">
+            <div class="flex flex-col space-y-2">
+                <a href="#beranda" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-resik-50 hover:text-resik-700">Beranda</a>
+                <a href="#tentang" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-resik-50 hover:text-resik-700">Tentang KAMPUNG RESIK</a>
+                <a href="#layanan" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-resik-50 hover:text-resik-700">4 Layanan Digital</a>
+                <a href="#manfaat" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-resik-50 hover:text-resik-700">Manfaat Bagi Warga</a>
+                <a href="#partisipasi" class="mobile-nav-link px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 hover:bg-resik-50 hover:text-resik-700">Mari Berpartisipasi</a>
+                <div class="pt-2">
+                    <a href="#layanan" class="mobile-nav-link w-full inline-flex items-center justify-center gap-2 bg-resik-600 text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-sm">
+                        <span>Akses Layanan Sekarang</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="beranda" class="relative bg-leaf-pattern pt-10 pb-20 lg:pt-16 lg:pb-28 overflow-hidden border-b border-krem-200">
+            <!-- Ornamen Lingkaran Lembut -->
+            <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-resik-200/40 blur-3xl pointer-events-none"></div>
+            <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-krem-300/50 blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Kolom Kiri: Teks Utama & CTA -->
+                    <div class="lg:col-span-7 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-resik-100 border border-resik-200 text-resik-700 text-xs sm:text-sm font-semibold mb-6">
+                            <svg class="w-4 h-4 text-resik-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                            </svg>
+                            <span>Portal Digital Terpadu Kelurahan Jatimekar</span>
+                        </div>
+
+                        <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-[3.25rem] text-slate-900 tracking-tight leading-[1.15] mb-6">
+                            Mewujudkan Lingkungan Asri & Ekonomi Warga Mandiri Bersama <span class="text-resik-600 underline decoration-resik-200 decoration-wavy decoration-2 underline-offset-8">KAMPUNG RESIK</span>
+                        </h1>
+
+                        <p class="text-slate-600 text-base sm:text-lg leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+                            Satu pintu penghubung seluruh inovasi layanan digital Kelurahan Jatimekar. Mulai dari pelaporan fasilitas lingkungan, pusat pembelajaran & legalitas UMKM, hingga gerakan jadwal gotong royong warga secara transparan dan mudah diakses dari HP maupun komputer.
+                        </p>
+
+                        <!-- Tombol Navigasi Utama -->
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#layanan" class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-resik-600 hover:bg-resik-700 text-white font-semibold px-7 py-4 rounded-2xl shadow-lg shadow-resik-600/20 hover:shadow-xl transition-all text-base">
+                                <span>Pilih Layanan Digital</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                </svg>
+                            </a>
+                            <a href="#tentang" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white hover:bg-krem-100 text-resik-700 border border-krem-300 font-semibold px-7 py-4 rounded-2xl transition-all text-base">
+                                <span>Kenali Kampung Resik</span>
+                            </a>
+                        </div>
+
+                        <!-- Statistik Ringkas / Pilar -->
+                        <div class="mt-10 pt-8 border-t border-krem-200 grid grid-cols-3 gap-4 max-w-lg mx-auto lg:mx-0 text-left">
+                            <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-krem-200">
+                                <span class="block font-display font-bold text-xl sm:text-2xl text-resik-600">4 Aplikasi</span>
+                                <span class="text-xs text-slate-600">Terintegrasi Satu Pintu</span>
+                            </div>
+                            <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-krem-200">
+                                <span class="block font-display font-bold text-xl sm:text-2xl text-resik-600">24/7 Online</span>
+                                <span class="text-xs text-slate-600">Akses Tanpa Antre</span>
+                            </div>
+                            <div class="bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl border border-krem-200">
+                                <span class="block font-display font-bold text-xl sm:text-2xl text-resik-600">100% Gratis</span>
+                                <span class="text-xs text-slate-600">Untuk Warga Jatimekar</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kolom Kanan: Kartu Visual Brand KAMPUNG RESIK -->
+                    <div class="lg:col-span-5">
+                        <div class="relative mx-auto max-w-md lg:max-w-none">
+                            <!-- Bingkai Belakang Krem & Hijau -->
+                            <div class="absolute inset-0 bg-gradient-to-tr from-resik-600 to-emerald-500 rounded-3xl transform rotate-2 scale-[1.02] opacity-15"></div>
+                            
+                            <div class="relative bg-white rounded-3xl p-6 sm:p-8 shadow-soft border border-resik-100">
+                                <div class="flex items-center justify-between mb-6 pb-4 border-b border-krem-100">
+                                    <div class="flex items-center gap-3">
+                                        <span class="w-3 h-3 rounded-full bg-resik-500"></span>
+                                        <span class="text-xs font-bold uppercase tracking-wider text-resik-700">Ekosistem Digital Warga</span>
+                                    </div>
+                                    <span class="text-xs font-medium bg-krem-100 text-slate-700 px-3 py-1 rounded-full">Kel. Jatimekar</span>
+                                </div>
+
+                                <!-- Logo Utama Besar -->
+                                <div class="bg-gradient-to-b from-resik-50 to-krem-50 rounded-2xl p-6 flex flex-col items-center text-center border border-resik-100 mb-6">
+                                    <img 
+                                        src="https://i.ibb.co.com/G3fjXpWH/IMG-2833.png" 
+                                        alt="Logo Utama KAMPUNG RESIK" 
+                                        class="w-36 h-36 sm:w-44 sm:h-44 object-contain drop-shadow-md mb-4"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/200x200/1B5E20/FFFFFF?text=KAMPUNG+RESIK';"
+                                    >
+                                    <h2 class="font-display font-bold text-xl text-resik-800">KAMPUNG RESIK JATIMEKAR</h2>
+                                    <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                                        Resik Lingkungannya, Berdaya UMKM-nya, Rukun Warganya
+                                    </p>
+                                </div>
+
+                                <!-- Pintasan Cepat 4 Layanan -->
+                                <div class="space-y-2.5">
+                                    <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 px-1">Pintasan Langsung Layanan:</p>
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                                        <a href="https://script.google.com/macros/s/AKfycbziQEvBxxe4Khk2vm6z_z6CBuBel6qnytp6-NDh2HAeM0lJmb9mYV9BU3U9cZnBdMl3/exec" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-200 transition group">
+                                            <span class="w-2 h-2 rounded-full bg-resik-500"></span>
+                                            <span class="text-xs font-semibold text-slate-700 group-hover:text-resik-700 truncate">Jalin Jatimekar</span>
+                                            <svg class="w-3.5 h-3.5 ml-auto text-slate-400 group-hover:text-resik-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </a>
+                                        <a href="https://script.google.com/macros/s/AKfycbwHF5_RJyryT7nV6FUyEurRH1zXMDechTFqeAZe0-wS4l0ovuq09LurcgfHH-DoiUlBXw/exec" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-200 transition group">
+                                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                                            <span class="text-xs font-semibold text-slate-700 group-hover:text-resik-700 truncate">Pojok Edukasi UMKM</span>
+                                            <svg class="w-3.5 h-3.5 ml-auto text-slate-400 group-hover:text-resik-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </a>
+                                        <a href="https://s.id/dashboardnib" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-200 transition group">
+                                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                                            <span class="text-xs font-semibold text-slate-700 group-hover:text-resik-700 truncate">Dashboard NIB UMKM</span>
+                                            <svg class="w-3.5 h-3.5 ml-auto text-slate-400 group-hover:text-resik-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </a>
+                                        <a href="https://s.id/radargotongroyong" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 p-2.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-200 transition group">
+                                            <span class="w-2 h-2 rounded-full bg-teal-600"></span>
+                                            <span class="text-xs font-semibold text-slate-700 group-hover:text-resik-700 truncate">Radar Gotong Royong</span>
+                                            <svg class="w-3.5 h-3.5 ml-auto text-slate-400 group-hover:text-resik-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION PENGENALAN KAMPUNG RESIK -->
+        <section id="tentang" class="py-16 lg:py-24 bg-white border-b border-krem-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center reveal-item">
+                    <span class="inline-block text-xs font-bold uppercase tracking-widest text-resik-600 bg-resik-50 px-3.5 py-1.5 rounded-full border border-resik-100 mb-3">
+                        Mengenal Inisiatif Kami
+                    </span>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight mb-5">
+                        Apa Itu Portal Digital <span class="text-resik-600">KAMPUNG RESIK</span>?
+                    </h2>
+                    <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+                        <strong>KAMPUNG RESIK</strong> hadir sebagai pusat integrasi layanan masyarakat berbasis teknologi tepat guna di Kelurahan Jatimekar. Kami menyatukan kepedulian terhadap kebersihan infrastruktur lingkungan, pemberdayaan pelaku usaha mikro (UMKM), serta semangat kebersamaan warga ke dalam satu halaman yang ramah pengguna.
+                    </p>
+                </div>
+
+                <!-- 3 Nilai Utama Kampung Resik -->
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Pilar 1 -->
+                    <div class="reveal-item bg-krem-50 rounded-3xl p-7 border border-krem-200 hover:border-resik-200 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-resik-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Lingkungan Bersih & Terpantau</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Memudahkan warga melaporkan kendala infrastruktur maupun masalah kebersihan lingkungan serta memantau jadwal kerja bakti RT/RW secara berkala.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 2 -->
+                    <div class="reveal-item bg-krem-50 rounded-3xl p-7 border border-krem-200 hover:border-resik-200 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-resik-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 mb-2">UMKM Naik Kelas & Legal</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Mendukung pelaku usaha lokal dengan materi edukasi promosi gratis dan mendata direktori UMKM yang telah memiliki Nomor Induk Berusaha (NIB).
+                        </p>
+                    </div>
+
+                    <!-- Pilar 3 -->
+                    <div class="reveal-item bg-krem-50 rounded-3xl p-7 border border-krem-200 hover:border-resik-200 transition">
+                        <div class="w-12 h-12 rounded-2xl bg-resik-600 text-white flex items-center justify-center mb-5 shadow-sm">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-display font-bold text-lg text-slate-900 mb-2">Kolaborasi Warga & Kelurahan</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            Menghubungkan informasi antar-warga, pengurus lingkungan, dan perangkat Kelurahan Jatimekar secara terbuka, cepat, dan terdokumentasi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 KARTU LAYANAN DIGITAL UTAMA -->
+        <section id="layanan" class="py-16 lg:py-24 bg-krem-50 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Judul Section -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4 reveal-item">
+                    <div>
+                        <span class="inline-block text-xs font-bold uppercase tracking-widest text-resik-600 bg-resik-100 px-3.5 py-1.5 rounded-full mb-3">
+                            Layanan Terpadu Warga
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight">
+                            4 Layanan Digital Utama <span class="text-resik-600">KAMPUNG RESIK</span>
+                        </h2>
+                    </div>
+                    <p class="text-slate-600 text-sm sm:text-base max-w-md">
+                        Klik pada kartu atau tombol <strong>“Buka Layanan”</strong> untuk langsung menuju aplikasi terkait di tab baru.
+                    </p>
+                </div>
+
+                <!-- Grid 4 Kartu Layanan (Seluruh Kartu adalah Anchor Tag yang Membuka Tab Baru) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
+
+                    <!-- KARTU 1: Jalin Jatimekar -->
+                    <a 
+                        href="https://script.google.com/macros/s/AKfycbziQEvBxxe4Khk2vm6z_z6CBuBel6qnytp6-NDh2HAeM0lJmb9mYV9BU3U9cZnBdMl3/exec" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Buka Layanan Jalin Jatimekar — Pelaporan infrastruktur dan permasalahan lingkungan di tab baru"
+                        class="service-card reveal-item group flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-8 border border-krem-200 hover:border-resik-500 shadow-soft hover:shadow-card-hover focus:outline-none focus:ring-4 focus:ring-resik-500/20"
+                    >
+                        <div>
+                            <!-- Baris Atas: Logo & Badge -->
+                            <div class="flex items-start justify-between gap-4 mb-6">
+                                <div class="service-logo-wrap w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-resik-50 border border-resik-100 p-2.5 flex items-center justify-center overflow-hidden shrink-0">
+                                    <img 
+                                        src="https://i.ibb.co.com/Q31n330C/Logo-Jalin-Jatimekar-Bernuansa-Alam.png" 
+                                        alt="Logo Jalin Jatimekar" 
+                                        class="w-full h-full object-contain"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/120x120/2E7D32/FFFFFF?text=Jalin';"
+                                    >
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-resik-700 bg-resik-50 border border-resik-200 px-3 py-1 rounded-full">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-resik-500"></span>
+                                    Infrastruktur & Lingkungan
+                                </span>
+                            </div>
+
+                            <!-- Nama & Deskripsi Layanan -->
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 group-hover:text-resik-600 transition mb-2.5">
+                                Jalin Jatimekar
+                            </h3>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                                Pelaporan infrastruktur dan permasalahan lingkungan. Sampaikan aduan jalan rusak, saluran air, lampu penerangan, maupun kebersihan di sekitar tempat tinggal Anda secara cepat beserta titik lokasi dan foto pendukung.
+                            </p>
+                        </div>
+
+                        <!-- Tombol Buka Layanan -->
+                        <div class="pt-4 border-t border-krem-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400">Aplikasi Web Resmi</span>
+                            <span class="inline-flex items-center gap-2 bg-resik-600 group-hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all">
+                                <span>Buka Layanan</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- KARTU 2: Pojok Edukasi UMKM -->
+                    <a 
+                        href="https://script.google.com/macros/s/AKfycbwHF5_RJyryT7nV6FUyEurRH1zXMDechTFqeAZe0-wS4l0ovuq09LurcgfHH-DoiUlBXw/exec" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Buka Layanan Pojok Edukasi UMKM — Perpustakaan digital materi dan template UMKM di tab baru"
+                        class="service-card reveal-item group flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-8 border border-krem-200 hover:border-resik-500 shadow-soft hover:shadow-card-hover focus:outline-none focus:ring-4 focus:ring-resik-500/20"
+                    >
+                        <div>
+                            <!-- Baris Atas: Logo & Badge -->
+                            <div class="flex items-start justify-between gap-4 mb-6">
+                                <div class="service-logo-wrap w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-resik-50 border border-resik-100 p-2.5 flex items-center justify-center overflow-hidden shrink-0">
+                                    <img 
+                                        src="https://i.ibb.co.com/35JWP50y/icon-pojok-edukasi-umkm.png" 
+                                        alt="Logo Pojok Edukasi UMKM" 
+                                        class="w-full h-full object-contain"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/120x120/2E7D32/FFFFFF?text=Edukasi';"
+                                    >
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-resik-700 bg-resik-50 border border-resik-200 px-3 py-1 rounded-full">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    Literasi & Promosi Usaha
+                                </span>
+                            </div>
+
+                            <!-- Nama & Deskripsi Layanan -->
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 group-hover:text-resik-600 transition mb-2.5">
+                                Pojok Edukasi UMKM
+                            </h3>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                                Perpustakaan digital berisi materi, template promosi, dan tutorial UMKM. Pelajari cara memasarkan produk secara online, manajemen keuangan usaha sederhana, hingga desain konten siap pakai untuk memajukan usaha warga.
+                            </p>
+                        </div>
+
+                        <!-- Tombol Buka Layanan -->
+                        <div class="pt-4 border-t border-krem-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400">Aplikasi Web Resmi</span>
+                            <span class="inline-flex items-center gap-2 bg-resik-600 group-hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all">
+                                <span>Buka Layanan</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- KARTU 3: Dashboard UMKM Ber-NIB Jatimekar -->
+                    <a 
+                        href="https://s.id/dashboardnib" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Buka Layanan Dashboard UMKM Ber-NIB Jatimekar di tab baru"
+                        class="service-card reveal-item group flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-8 border border-krem-200 hover:border-resik-500 shadow-soft hover:shadow-card-hover focus:outline-none focus:ring-4 focus:ring-resik-500/20"
+                    >
+                        <div>
+                            <!-- Baris Atas: Logo & Badge -->
+                            <div class="flex items-start justify-between gap-4 mb-6">
+                                <div class="service-logo-wrap w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-resik-50 border border-resik-100 p-2.5 flex items-center justify-center overflow-hidden shrink-0">
+                                    <img 
+                                        src="https://i.ibb.co.com/fzF4Q977/pantau-NIB.png" 
+                                        alt="Logo Dashboard UMKM Ber-NIB Jatimekar" 
+                                        class="w-full h-full object-contain"
+                                        onerror="this.onerror=null; this.src='https://placehold.co/120x120/2E7D32/FFFFFF?text=NIB';"
+                                    >
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-resik-700 bg-resik-50 border border-resik-200 px-3 py-1 rounded-full">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                    Direktori Legalitas Usaha
+                                </span>
+                            </div>
+
+                            <!-- Nama & Deskripsi Layanan -->
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 group-hover:text-resik-600 transition mb-2.5">
+                                Dashboard UMKM Ber-NIB Jatimekar
+                            </h3>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                                Direktori informasi UMKM ber-NIB. Temukan daftar lengkap pelaku usaha mikro dan kecil di wilayah Kelurahan Jatimekar yang telah resmi terdaftar memiliki Nomor Induk Berusaha (NIB) beserta profil produknya.
+                            </p>
+                        </div>
+
+                        <!-- Tombol Buka Layanan -->
+                        <div class="pt-4 border-t border-krem-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400">s.id/dashboardnib</span>
+                            <span class="inline-flex items-center gap-2 bg-resik-600 group-hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all">
+                                <span>Buka Layanan</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- KARTU 4: Radar Gotong Royong (dengan Placeholder Ikon Lingkungan Khusus) -->
+                    <a 
+                        href="https://s.id/radargotongroyong" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label="Buka Layanan Radar Gotong Royong — Jadwal kebersihan dan dokumentasi kerja bakti warga di tab baru"
+                        class="service-card reveal-item group flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-8 border border-krem-200 hover:border-resik-500 shadow-soft hover:shadow-card-hover focus:outline-none focus:ring-4 focus:ring-resik-500/20"
+                    >
+                        <div>
+                            <!-- Baris Atas: Placeholder Ikon Lingkungan SVG & Badge -->
+                            <div class="flex items-start justify-between gap-4 mb-6">
+                                <div class="service-logo-wrap w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-resik-600 to-emerald-600 border border-resik-500 p-3 flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
+                                    <!-- SVG Ikon Lingkungan & Gotong Royong -->
+                                    <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ikon Lingkungan Radar Gotong Royong">
+                                        <!-- Lingkaran Radar Halus -->
+                                        <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="4 4"/>
+                                        <circle cx="32" cy="32" r="21" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.8"/>
+                                        <!-- Daun Kembar Tumbuh (Simbol Lingkungan Resik) -->
+                                        <path d="M32 46V24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                        <path d="M32 32C32 23 41 18 47 19C47 26 42 33 32 32Z" fill="#A7F3D0" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                                        <path d="M32 36C32 28 23 23 17 24C17 31 22 37 32 36Z" fill="#D1FAE5" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
+                                        <!-- Tangan / Bumi Penopang Gotong Royong -->
+                                        <path d="M18 45C22 49 26.8 51 32 51C37.2 51 42 49 46 45" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                                        <circle cx="32" cy="14" r="2.5" fill="#FDE68A"/>
+                                    </svg>
+                                </div>
+                                <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-resik-700 bg-resik-50 border border-resik-200 px-3 py-1 rounded-full">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-teal-600"></span>
+                                    Kerja Bakti & Kebersihan
+                                </span>
+                            </div>
+
+                            <!-- Nama & Deskripsi Layanan -->
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-slate-900 group-hover:text-resik-600 transition mb-2.5">
+                                Radar Gotong Royong
+                            </h3>
+                            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                                Publikasi jadwal kebersihan, kegiatan kerja bakti, dan dokumentasi warga. Pantau agenda aksi bersih lingkungan di tiap RT/RW dan lihat galeri dokumentasi semangat gotong royong masyarakat Jatimekar.
+                            </p>
+                        </div>
+
+                        <!-- Tombol Buka Layanan -->
+                        <div class="pt-4 border-t border-krem-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-400">s.id/radargotongroyong</span>
+                            <span class="inline-flex items-center gap-2 bg-resik-600 group-hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl shadow-sm transition-all">
+                                <span>Buka Layanan</span>
+                                <svg class="w-4 h-4 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION MANFAAT NYATA BAGI WARGA -->
+        <section id="manfaat" class="py-16 lg:py-24 bg-white border-t border-b border-krem-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Deskripsi Manfaat Kiri -->
+                    <div class="lg:col-span-5 reveal-item">
+                        <span class="inline-block text-xs font-bold uppercase tracking-widest text-resik-600 bg-resik-50 px-3.5 py-1.5 rounded-full border border-resik-100 mb-3">
+                            Dampak & Manfaat
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl text-slate-900 tracking-tight mb-5">
+                            Mengapa Menggunakan Portal <span class="text-resik-600">KAMPUNG RESIK</span>?
+                        </h2>
+                        <p class="text-slate-600 text-base leading-relaxed mb-6">
+                            Dirancang khusus agar ramah digunakan oleh seluruh lapisan masyarakat Kelurahan Jatimekar, baik pengurus RT/RW, pelaku usaha rumahan, pemuda karang taruna, maupun warga umum.
+                        </p>
+                        <div class="bg-krem-50 rounded-2xl p-5 border border-krem-200 flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-resik-100 text-resik-700 flex items-center justify-center shrink-0 mt-0.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="font-display font-bold text-sm text-slate-900">Nyaman Diakses Tanpa Instalasi</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Tidak perlu mengunduh aplikasi yang memenuhi memori HP. Cukup buka halaman ini dan pilih layanan yang dibutuhkan.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Grid 4 Poin Manfaat Kanan -->
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <div class="reveal-item bg-krem-50/70 rounded-2xl p-6 border border-krem-200">
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-resik-600 text-white font-display font-bold text-sm mb-4">01</span>
+                            <h3 class="font-display font-bold text-base text-slate-900 mb-2">Respon Masalah Lingkungan Lebih Cepat</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Laporan warga melalui Jalin Jatimekar langsung tercatat rapi sehingga memudahkan tindak lanjut penanganan di lapangan.
+                            </p>
+                        </div>
+
+                        <div class="reveal-item bg-krem-50/70 rounded-2xl p-6 border border-krem-200">
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-resik-600 text-white font-display font-bold text-sm mb-4">02</span>
+                            <h3 class="font-display font-bold text-base text-slate-900 mb-2">Peningkatan Daya Saing UMKM Warga</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Pelaku UMKM memperoleh panduan promosi praktis dan visibilitas usaha formal melalui direktori UMKM Ber-NIB.
+                            </p>
+                        </div>
+
+                        <div class="reveal-item bg-krem-50/70 rounded-2xl p-6 border border-krem-200">
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-resik-600 text-white font-display font-bold text-sm mb-4">03</span>
+                            <h3 class="font-display font-bold text-base text-slate-900 mb-2">Transparansi Kegiatan Kebersihan</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Jadwal kerja bakti dan dokumentasi kegiatan warga terpublikasi dengan jelas melalui Radar Gotong Royong.
+                            </p>
+                        </div>
+
+                        <div class="reveal-item bg-krem-50/70 rounded-2xl p-6 border border-krem-200">
+                            <span class="inline-flex items-center justify-center w-9 h-9 rounded-xl bg-resik-600 text-white font-display font-bold text-sm mb-4">04</span>
+                            <h3 class="font-display font-bold text-base text-slate-900 mb-2">Satu Tautan Mudah Dihafal</h3>
+                            <p class="text-slate-600 text-sm leading-relaxed">
+                                Warga tidak perlu lagi bingung mencari banyak link terpisah di grup pesan; semuanya terkumpul di portal KAMPUNG RESIK.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION AJAKAN BERPARTISIPASI (CTA) -->
+        <section id="partisipasi" class="py-16 lg:py-24 bg-krem-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="reveal-item relative rounded-3xl bg-gradient-to-br from-resik-700 via-resik-600 to-emerald-700 text-white p-8 sm:p-12 lg:p-16 overflow-hidden shadow-xl">
+                    <!-- Ornamen Latar -->
+                    <div class="absolute -right-16 -bottom-16 w-72 h-72 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+                    <div class="absolute -left-16 -top-16 w-64 h-64 rounded-full bg-emerald-400/10 blur-2xl pointer-events-none"></div>
+
+                    <div class="relative z-10 max-w-3xl mx-auto text-center">
+                        <span class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm text-krem-50 text-xs font-semibold px-4 py-1.5 rounded-full border border-white/20 mb-5">
+                            <span>Mari Bergerak Bersama</span>
+                        </span>
+                        <h2 class="font-display font-extrabold text-2xl sm:text-4xl lg:text-5xl tracking-tight leading-tight mb-5">
+                            Saatnya Berpartisipasi Wujudkan Jatimekar yang Resik, Maju & Berdaya!
+                        </h2>
+                        <p class="text-resik-100 text-base sm:text-lg leading-relaxed mb-8">
+                            Perubahan besar dimulai dari langkah kecil kita bersama. Laporkan kondisi lingkungan sekitar, kembangkan usaha lokal Anda, dan ikuti jadwal gotong royong di lingkungan RT/RW Anda hari ini.
+                        </p>
+
+                        <!-- Tombol Aksi Langsung -->
+                        <div class="flex flex-wrap items-center justify-center gap-4">
+                            <a 
+                                href="https://script.google.com/macros/s/AKfycbziQEvBxxe4Khk2vm6z_z6CBuBel6qnytp6-NDh2HAeM0lJmb9mYV9BU3U9cZnBdMl3/exec" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 bg-white text-resik-700 hover:bg-krem-100 font-bold text-sm sm:text-base px-6 py-3.5 rounded-xl shadow-md transition"
+                            >
+                                <span>Buat Laporan Lingkungan</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                            <a 
+                                href="https://s.id/radargotongroyong" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                class="inline-flex items-center gap-2 bg-resik-800/70 hover:bg-resik-800 text-white border border-white/25 font-semibold text-sm sm:text-base px-6 py-3.5 rounded-xl transition"
+                            >
+                                <span>Lihat Jadwal Gotong Royong</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                            <button 
+                                id="sharePortalBtn" 
+                                type="button"
+                                class="inline-flex items-center gap-2 bg-transparent hover:bg-white/10 text-krem-100 border border-white/30 font-semibold text-sm sm:text-base px-5 py-3.5 rounded-xl transition cursor-pointer"
+                            >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                                <span id="shareBtnText">Salin Link Portal</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER RAPI & LENGKAP -->
+    <footer class="bg-resik-900 text-krem-100 pt-14 pb-10 border-t border-resik-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-10 border-b border-resik-800">
+                
+                <!-- Identitas Portal -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-3.5 mb-4">
+                        <div class="w-11 h-11 rounded-xl bg-white p-1.5 flex items-center justify-center shrink-0">
+                            <img 
+                                src="https://i.ibb.co.com/G3fjXpWH/IMG-2833.png" 
+                                alt="Logo KAMPUNG RESIK" 
+                                class="w-full h-full object-contain"
+                                onerror="this.onerror=null; this.src='https://placehold.co/80x80/1B5E20/FFFFFF?text=KR';"
+                            >
+                        </div>
+                        <div>
+                            <span class="block font-display font-extrabold text-lg text-white leading-none">KAMPUNG RESIK</span>
+                            <span class="block text-xs text-resik-200 mt-1">Portal Digital Terpadu Kelurahan Jatimekar</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-resik-200/90 leading-relaxed max-w-sm">
+                        Media penghubung layanan digital masyarakat Kelurahan Jatimekar, Kecamatan Jatiasih, Kota Bekasi. Mewujudkan tata kelola lingkungan yang bersih, transparan, dan UMKM warga yang berdaya saing.
+                    </p>
+                </div>
+
+                <!-- Navigasi Halaman -->
+                <div class="md:col-span-3">
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wider text-white mb-4">Navigasi Halaman</h3>
+                    <ul class="space-y-2.5 text-sm text-resik-200">
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda Utama</a></li>
+                        <li><a href="#tentang" class="hover:text-white transition">Tentang Kampung Resik</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition">4 Layanan Digital</a></li>
+                        <li><a href="#manfaat" class="hover:text-white transition">Manfaat Bagi Warga</a></li>
+                        <li><a href="#partisipasi" class="hover:text-white transition">Ajakan Partisipasi</a></li>
+                    </ul>
+                </div>
+
+                <!-- Tautan Langsung Layanan -->
+                <div class="md:col-span-4">
+                    <h3 class="font-display font-bold text-sm uppercase tracking-wider text-white mb-4">Akses Langsung Aplikasi</h3>
+                    <ul class="space-y-2.5 text-sm text-resik-200">
+                        <li>
+                            <a href="https://script.google.com/macros/s/AKfycbziQEvBxxe4Khk2vm6z_z6CBuBel6qnytp6-NDh2HAeM0lJmb9mYV9BU3U9cZnBdMl3/exec" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5 transition">
+                                <span>Jalin Jatimekar</span>
+                                <svg class="w-3.5 h-3.5 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://script.google.com/macros/s/AKfycbwHF5_RJyryT7nV6FUyEurRH1zXMDechTFqeAZe0-wS4l0ovuq09LurcgfHH-DoiUlBXw/exec" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5 transition">
+                                <span>Pojok Edukasi UMKM</span>
+                                <svg class="w-3.5 h-3.5 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://s.id/dashboardnib" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5 transition">
+                                <span>Dashboard UMKM Ber-NIB Jatimekar</span>
+                                <svg class="w-3.5 h-3.5 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://s.id/radargotongroyong" target="_blank" rel="noopener noreferrer" class="hover:text-white inline-flex items-center gap-1.5 transition">
+                                <span>Radar Gotong Royong</span>
+                                <svg class="w-3.5 h-3.5 opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Copyright & Tombol Kembali ke Atas -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-resik-200/80">
+                <p>&copy; <span id="currentYear">2026</span> KAMPUNG RESIK — Kelurahan Jatimekar. Seluruh hak cipta dilindungi.</p>
+                <a href="#beranda" class="inline-flex items-center gap-1.5 text-krem-100 hover:text-white font-medium bg-resik-800 px-3.5 py-2 rounded-lg transition">
+                    <span>Kembali ke Atas</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL GENERATOR FILE TERPISAH (index.html, styles.css, script.js, README.md) UNTUK GITHUB & NETLIFY -->
+    <div id="deployModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-krem-200 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-start justify-between gap-4 pb-4 border-b border-krem-200">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-resik-600">Siap Push ke Repository kampung-resik</span>
+                    <h3 class="font-display font-bold text-xl text-slate-900 mt-1">Unduh Paket Struktur File Terpisah</h3>
+                </div>
+                <button id="closeDeployModalBtn" type="button" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-krem-100">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+
+            <div class="py-5 space-y-4 text-sm text-slate-600">
+                <p>
+                    Proyek ini dapat langsung di-deploy sebagai 1 file <code class="bg-krem-100 px-1.5 py-0.5 rounded text-resik-700 font-mono">index.html</code>, atau menggunakan struktur 4 file terpisah sesuai standar repositori statis:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <button type="button" data-download="styles.css" class="download-file-btn flex items-center justify-between p-3.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-500 transition text-left cursor-pointer">
+                        <div>
+                            <span class="block font-mono font-bold text-slate-800 text-xs">styles.css</span>
+                            <span class="text-xs text-slate-500">Stylesheet Kustom & Animasi</span>
+                        </div>
+                        <span class="text-xs font-semibold text-resik-600">Unduh &rarr;</span>
+                    </button>
+                    <button type="button" data-download="script.js" class="download-file-btn flex items-center justify-between p-3.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-500 transition text-left cursor-pointer">
+                        <div>
+                            <span class="block font-mono font-bold text-slate-800 text-xs">script.js</span>
+                            <span class="text-xs text-slate-500">Interaksi Navbar & Scroll</span>
+                        </div>
+                        <span class="text-xs font-semibold text-resik-600">Unduh &rarr;</span>
+                    </button>
+                    <button type="button" data-download="README.md" class="download-file-btn flex items-center justify-between p-3.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-500 transition text-left cursor-pointer">
+                        <div>
+                            <span class="block font-mono font-bold text-slate-800 text-xs">README.md</span>
+                            <span class="text-xs text-slate-500">Dokumentasi GitHub & Netlify</span>
+                        </div>
+                        <span class="text-xs font-semibold text-resik-600">Unduh &rarr;</span>
+                    </button>
+                    <div class="p-3.5 rounded-xl bg-resik-50 border border-resik-200 flex items-center justify-between">
+                        <div>
+                            <span class="block font-mono font-bold text-resik-800 text-xs">index.html</span>
+                            <span class="text-xs text-resik-700">Gunakan file halaman utama ini</span>
+                        </div>
+                        <span class="text-xs font-bold text-resik-700">Aktif &#10003;</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-krem-200 flex justify-end">
+                <button id="closeDeployModalFooterBtn" type="button" class="bg-resik-600 hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition cursor-pointer">
+                    Selesai & Tutup
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifikasi Salin Link -->
+    <div id="toastMessage" class="fixed bottom-5 right-5 z-50 hidden bg-resik-800 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-lg border border-resik-600 flex items-center gap-2.5">
+        <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+        <span id="toastText">Tautan berhasil disalin!</span>
+    </div>
+
+    <!-- JavaScript Murni (setara dengan script.js) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Tahun Dinamis pada Footer
+            const yearEl = document.getElementById('currentYear');
+            if (yearEl) {
+                yearEl.textContent = new Date().getFullYear();
+            }
+
+            // 2. Toggle Menu Navigasi Mobile
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenuPanel = document.getElementById('mobileMenuPanel');
+            const menuIconOpen = document.getElementById('menuIconOpen');
+            const menuIconClose = document.getElementById('menuIconClose');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            function toggleMobileMenu() {
+                const isHidden = mobileMenuPanel.classList.contains('hidden');
+                if (isHidden) {
+                    mobileMenuPanel.classList.remove('hidden');
+                    menuIconOpen.classList.add('hidden');
+                    menuIconClose.classList.remove('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'true');
+                } else {
+                    mobileMenuPanel.classList.add('hidden');
+                    menuIconOpen.classList.remove('hidden');
+                    menuIconClose.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                }
+            }
+
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+            }
+
+            // Tutup menu mobile otomatis ketika salah satu link diklik
+            mobileNavLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (!mobileMenuPanel.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
+                });
+            });
+
+            // 3. Highlight Menu Navigasi Aktif Saat Scroll (ScrollSpy)
+            const sections = document.querySelectorAll('main section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            function updateActiveNavLink() {
+                let currentSectionId = 'beranda';
+                const scrollPosition = window.scrollY + 140;
+
+                sections.forEach(function (section) {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(function (link) {
+                    link.classList.remove('active', 'text-resik-600');
+                    if (link.getAttribute('href') === '#' + currentSectionId) {
+                        link.classList.add('active', 'text-resik-600');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+
+            // 4. Animasi Reveal Elemen Saat Masuk Viewport
+            const revealItems = document.querySelectorAll('.reveal-item');
+            if ('IntersectionObserver' in window) {
+                const revealObserver = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12 });
+
+                revealItems.forEach(function (item) {
+                    revealObserver.observe(item);
+                });
+            } else {
+                revealItems.forEach(function (item) {
+                    item.classList.add('revealed');
+                });
+            }
+
+            // 5. Tombol Salin Tautan Portal (Tanpa alert)
+            const sharePortalBtn = document.getElementById('sharePortalBtn');
+            const toastMessage = document.getElementById('toastMessage');
+            const toastText = document.getElementById('toastText');
+
+            function showToast(msg) {
+                toastText.textContent = msg;
+                toastMessage.classList.remove('hidden');
+                setTimeout(function () {
+                    toastMessage.classList.add('hidden');
+                }, 3000);
+            }
+
+            if (sharePortalBtn) {
+                sharePortalBtn.addEventListener('click', function () {
+                    const dummyInput = document.createElement('input');
+                    dummyInput.value = window.location.href;
+                    document.body.appendChild(dummyInput);
+                    dummyInput.select();
+                    try {
+                        document.execCommand('copy');
+                        showToast('Tautan portal KAMPUNG RESIK berhasil disalin!');
+                    } catch (err) {
+                        showToast('Silakan salin URL dari bilah alamat browser Anda.');
+                    }
+                    document.body.removeChild(dummyInput);
+                });
+            }
+
+            // 6. Modal & Ekstraktor File Terpisah (styles.css, script.js, README.md)
+            const deployModal = document.getElementById('deployModal');
+            const openDeployGuideBtn = document.getElementById('openDeployGuideBtn');
+            const closeDeployModalBtn = document.getElementById('closeDeployModalBtn');
+            const closeDeployModalFooterBtn = document.getElementById('closeDeployModalFooterBtn');
+
+            function openModal() {
+                deployModal.classList.remove('hidden');
+            }
+            function closeModal() {
+                deployModal.classList.add('hidden');
+            }
+
+            if (openDeployGuideBtn) openDeployGuideBtn.addEventListener('click', openModal);
+            if (closeDeployModalBtn) closeDeployModalBtn.addEventListener('click', closeModal);
+            if (closeDeployModalFooterBtn) closeDeployModalFooterBtn.addEventListener('click', closeModal);
+
+            const fileContents = {
+                'styles.css': `/* styles.css — KAMPUNG RESIK Kelurahan Jatimekar */\n:root {\n  --bg-cream: #FDFBF7;\n  --primary-green: #1B5E20;\n  --accent-green: #2E7D32;\n}\n\nbody {\n  background-color: var(--bg-cream);\n  color: #1E293B;\n  overflow-x: hidden;\n}\n\n.bg-leaf-pattern {\n  background-image: radial-gradient(rgba(46, 125, 50, 0.08) 1.5px, transparent 1.5px), radial-gradient(rgba(46, 125, 50, 0.05) 1.5px, #FDFBF7 1.5px);\n  background-size: 36px 36px;\n  background-position: 0 0, 18px 18px;\n}\n\n.service-card {\n  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;\n}\n\n.service-card:hover {\n  transform: translateY(-8px);\n}\n`,
+                'script.js': `// script.js — KAMPUNG RESIK Kelurahan Jatimekar\ndocument.addEventListener('DOMContentLoaded', () => {\n  const yearEl = document.getElementById('currentYear');\n  if (yearEl) yearEl.textContent = new Date().getFullYear();\n\n  const mobileMenuBtn = document.getElementById('mobileMenuBtn');\n  const mobileMenuPanel = document.getElementById('mobileMenuPanel');\n  if (mobileMenuBtn && mobileMenuPanel) {\n    mobileMenuBtn.addEventListener('click', () => {\n      mobileMenuPanel.classList.toggle('hidden');\n    });\n  }\n});\n`,
+                'README.md': `# KAMPUNG RESIK — Portal Digital Terpadu Kelurahan Jatimekar\n\nLanding page resmi penghubung 4 layanan digital warga Kelurahan Jatimekar:\n1. **Jalin Jatimekar** (Pelaporan infrastruktur & lingkungan)\n2. **Pojok Edukasi UMKM** (Perpustakaan materi & template promosi UMKM)\n3. **Dashboard UMKM Ber-NIB Jatimekar** (Direktori informasi UMKM ber-NIB)\n4. **Radar Gotong Royong** (Jadwal kebersihan & dokumentasi kerja bakti)\n\n## Cara Deploy ke GitHub & Netlify\n1. Push seluruh file ke repository GitHub bernama \`kampung-resik\`.\n2. Buka Netlify -> **Add new site** -> **Import an existing project** -> Pilih GitHub \`kampung-resik\`.\n3. Kosongkan Build Command, isi Publish directory dengan \`.\`, lalu klik **Deploy site**.\n`
+            };
+
+            document.querySelectorAll('.download-file-btn').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    const fileName = btn.getAttribute('data-download');
+                    const content = fileContents[fileName] || '';
+                    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = fileName;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    showToast('File ' + fileName + ' berhasil diunduh!');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
