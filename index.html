@@ -23,7 +23,7 @@
     <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,9 +62,8 @@
         }
     </script>
 
-    <!-- Custom CSS (setara dengan styles.css) -->
+    <!-- Custom CSS -->
     <style>
-        /* Variabel & Utilitas Dasar */
         :root {
             --bg-cream: #FDFBF7;
             --primary-green: #1B5E20;
@@ -143,12 +142,7 @@
                 <span class="font-medium">Portal Layanan Masyarakat Digital — Kelurahan Jatimekar, Kec. Jatiasih, Kota Bekasi</span>
             </div>
             <div class="flex items-center gap-4">
-                <a href="#layanan" class="hover:text-emerald-200 underline underline-offset-2 transition">4 Layanan Aktif</a>
-                <span class="text-resik-200">|</span>
-                <button id="openDeployGuideBtn" type="button" class="inline-flex items-center gap-1 text-emerald-200 hover:text-white font-medium transition cursor-pointer">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                    <span>File GitHub & Netlify</span>
-                </button>
+                <a href="#layanan" class="hover:text-emerald-200 underline underline-offset-2 transition font-medium">4 Layanan Digital Aktif</a>
             </div>
         </div>
     </div>
@@ -426,7 +420,7 @@
                     </p>
                 </div>
 
-                <!-- Grid 4 Kartu Layanan (Seluruh Kartu adalah Anchor Tag yang Membuka Tab Baru) -->
+                <!-- Grid 4 Kartu Layanan -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-7 lg:gap-8">
 
                     <!-- KARTU 1: Jalin Jatimekar -->
@@ -567,7 +561,7 @@
                         </div>
                     </a>
 
-                    <!-- KARTU 4: Radar Gotong Royong (dengan Placeholder Ikon Lingkungan Khusus) -->
+                    <!-- KARTU 4: Radar Gotong Royong -->
                     <a 
                         href="https://s.id/radargotongroyong" 
                         target="_blank" 
@@ -581,14 +575,11 @@
                                 <div class="service-logo-wrap w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-resik-600 to-emerald-600 border border-resik-500 p-3 flex items-center justify-center overflow-hidden shrink-0 shadow-inner">
                                     <!-- SVG Ikon Lingkungan & Gotong Royong -->
                                     <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ikon Lingkungan Radar Gotong Royong">
-                                        <!-- Lingkaran Radar Halus -->
                                         <circle cx="32" cy="32" r="28" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" stroke-dasharray="4 4"/>
                                         <circle cx="32" cy="32" r="21" stroke="currentColor" stroke-opacity="0.4" stroke-width="1.8"/>
-                                        <!-- Daun Kembar Tumbuh (Simbol Lingkungan Resik) -->
                                         <path d="M32 46V24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                                         <path d="M32 32C32 23 41 18 47 19C47 26 42 33 32 32Z" fill="#A7F3D0" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
                                         <path d="M32 36C32 28 23 23 17 24C17 31 22 37 32 36Z" fill="#D1FAE5" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-                                        <!-- Tangan / Bumi Penopang Gotong Royong -->
                                         <path d="M18 45C22 49 26.8 51 32 51C37.2 51 42 49 46 45" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
                                         <circle cx="32" cy="14" r="2.5" fill="#FDE68A"/>
                                     </svg>
@@ -828,70 +819,13 @@
         </div>
     </footer>
 
-    <!-- MODAL GENERATOR FILE TERPISAH (index.html, styles.css, script.js, README.md) UNTUK GITHUB & NETLIFY -->
-    <div id="deployModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-krem-200 max-h-[90vh] overflow-y-auto">
-            <div class="flex items-start justify-between gap-4 pb-4 border-b border-krem-200">
-                <div>
-                    <span class="text-xs font-bold uppercase tracking-wider text-resik-600">Siap Push ke Repository kampung-resik</span>
-                    <h3 class="font-display font-bold text-xl text-slate-900 mt-1">Unduh Paket Struktur File Terpisah</h3>
-                </div>
-                <button id="closeDeployModalBtn" type="button" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-krem-100">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-                </button>
-            </div>
-
-            <div class="py-5 space-y-4 text-sm text-slate-600">
-                <p>
-                    Proyek ini dapat langsung di-deploy sebagai 1 file <code class="bg-krem-100 px-1.5 py-0.5 rounded text-resik-700 font-mono">index.html</code>, atau menggunakan struktur 4 file terpisah sesuai standar repositori statis:
-                </p>
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <button type="button" data-download="styles.css" class="download-file-btn flex items-center justify-between p-3.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-500 transition text-left cursor-pointer">
-                        <div>
-                            <span class="block font-mono font-bold text-slate-800 text-xs">styles.css</span>
-                            <span class="text-xs text-slate-500">Stylesheet Kustom & Animasi</span>
-                        </div>
-                        <span class="text-xs font-semibold text-resik-600">Unduh &rarr;</span>
-                    </button>
-                    <button type="button" data-download="script.js" class="download-file-btn flex items-center justify-between p-3.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-500 transition text-left cursor-pointer">
-                        <div>
-                            <span class="block font-mono font-bold text-slate-800 text-xs">script.js</span>
-                            <span class="text-xs text-slate-500">Interaksi Navbar & Scroll</span>
-                        </div>
-                        <span class="text-xs font-semibold text-resik-600">Unduh &rarr;</span>
-                    </button>
-                    <button type="button" data-download="README.md" class="download-file-btn flex items-center justify-between p-3.5 rounded-xl bg-krem-50 hover:bg-resik-50 border border-krem-200 hover:border-resik-500 transition text-left cursor-pointer">
-                        <div>
-                            <span class="block font-mono font-bold text-slate-800 text-xs">README.md</span>
-                            <span class="text-xs text-slate-500">Dokumentasi GitHub & Netlify</span>
-                        </div>
-                        <span class="text-xs font-semibold text-resik-600">Unduh &rarr;</span>
-                    </button>
-                    <div class="p-3.5 rounded-xl bg-resik-50 border border-resik-200 flex items-center justify-between">
-                        <div>
-                            <span class="block font-mono font-bold text-resik-800 text-xs">index.html</span>
-                            <span class="text-xs text-resik-700">Gunakan file halaman utama ini</span>
-                        </div>
-                        <span class="text-xs font-bold text-resik-700">Aktif &#10003;</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pt-4 border-t border-krem-200 flex justify-end">
-                <button id="closeDeployModalFooterBtn" type="button" class="bg-resik-600 hover:bg-resik-700 text-white font-semibold text-sm px-5 py-2.5 rounded-xl transition cursor-pointer">
-                    Selesai & Tutup
-                </button>
-            </div>
-        </div>
-    </div>
-
     <!-- Toast Notifikasi Salin Link -->
     <div id="toastMessage" class="fixed bottom-5 right-5 z-50 hidden bg-resik-800 text-white text-sm font-medium px-4 py-3 rounded-xl shadow-lg border border-resik-600 flex items-center gap-2.5">
         <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
         <span id="toastText">Tautan berhasil disalin!</span>
     </div>
 
-    <!-- JavaScript Murni (setara dengan script.js) -->
+    <!-- JavaScript Murni -->
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // 1. Tahun Dinamis pada Footer
@@ -982,7 +916,7 @@
                 });
             }
 
-            // 5. Tombol Salin Tautan Portal (Tanpa alert)
+            // 5. Tombol Salin Tautan Portal
             const sharePortalBtn = document.getElementById('sharePortalBtn');
             const toastMessage = document.getElementById('toastMessage');
             const toastText = document.getElementById('toastText');
@@ -1010,46 +944,6 @@
                     document.body.removeChild(dummyInput);
                 });
             }
-
-            // 6. Modal & Ekstraktor File Terpisah (styles.css, script.js, README.md)
-            const deployModal = document.getElementById('deployModal');
-            const openDeployGuideBtn = document.getElementById('openDeployGuideBtn');
-            const closeDeployModalBtn = document.getElementById('closeDeployModalBtn');
-            const closeDeployModalFooterBtn = document.getElementById('closeDeployModalFooterBtn');
-
-            function openModal() {
-                deployModal.classList.remove('hidden');
-            }
-            function closeModal() {
-                deployModal.classList.add('hidden');
-            }
-
-            if (openDeployGuideBtn) openDeployGuideBtn.addEventListener('click', openModal);
-            if (closeDeployModalBtn) closeDeployModalBtn.addEventListener('click', closeModal);
-            if (closeDeployModalFooterBtn) closeDeployModalFooterBtn.addEventListener('click', closeModal);
-
-            const fileContents = {
-                'styles.css': `/* styles.css — KAMPUNG RESIK Kelurahan Jatimekar */\n:root {\n  --bg-cream: #FDFBF7;\n  --primary-green: #1B5E20;\n  --accent-green: #2E7D32;\n}\n\nbody {\n  background-color: var(--bg-cream);\n  color: #1E293B;\n  overflow-x: hidden;\n}\n\n.bg-leaf-pattern {\n  background-image: radial-gradient(rgba(46, 125, 50, 0.08) 1.5px, transparent 1.5px), radial-gradient(rgba(46, 125, 50, 0.05) 1.5px, #FDFBF7 1.5px);\n  background-size: 36px 36px;\n  background-position: 0 0, 18px 18px;\n}\n\n.service-card {\n  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;\n}\n\n.service-card:hover {\n  transform: translateY(-8px);\n}\n`,
-                'script.js': `// script.js — KAMPUNG RESIK Kelurahan Jatimekar\ndocument.addEventListener('DOMContentLoaded', () => {\n  const yearEl = document.getElementById('currentYear');\n  if (yearEl) yearEl.textContent = new Date().getFullYear();\n\n  const mobileMenuBtn = document.getElementById('mobileMenuBtn');\n  const mobileMenuPanel = document.getElementById('mobileMenuPanel');\n  if (mobileMenuBtn && mobileMenuPanel) {\n    mobileMenuBtn.addEventListener('click', () => {\n      mobileMenuPanel.classList.toggle('hidden');\n    });\n  }\n});\n`,
-                'README.md': `# KAMPUNG RESIK — Portal Digital Terpadu Kelurahan Jatimekar\n\nLanding page resmi penghubung 4 layanan digital warga Kelurahan Jatimekar:\n1. **Jalin Jatimekar** (Pelaporan infrastruktur & lingkungan)\n2. **Pojok Edukasi UMKM** (Perpustakaan materi & template promosi UMKM)\n3. **Dashboard UMKM Ber-NIB Jatimekar** (Direktori informasi UMKM ber-NIB)\n4. **Radar Gotong Royong** (Jadwal kebersihan & dokumentasi kerja bakti)\n\n## Cara Deploy ke GitHub & Netlify\n1. Push seluruh file ke repository GitHub bernama \`kampung-resik\`.\n2. Buka Netlify -> **Add new site** -> **Import an existing project** -> Pilih GitHub \`kampung-resik\`.\n3. Kosongkan Build Command, isi Publish directory dengan \`.\`, lalu klik **Deploy site**.\n`
-            };
-
-            document.querySelectorAll('.download-file-btn').forEach(function (btn) {
-                btn.addEventListener('click', function () {
-                    const fileName = btn.getAttribute('data-download');
-                    const content = fileContents[fileName] || '';
-                    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-                    const url = URL.createObjectURL(blob);
-                    const a = document.createElement('a');
-                    a.href = url;
-                    a.download = fileName;
-                    document.body.appendChild(a);
-                    a.click();
-                    document.body.removeChild(a);
-                    URL.revokeObjectURL(url);
-                    showToast('File ' + fileName + ' berhasil diunduh!');
-                });
-            });
         });
     </script>
 </body>
